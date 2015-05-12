@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tests</title>
+  <link rel="stylesheet" href="/assets/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="/assets/loader.js"></script>
+  <script src="/assets/vendor.js"></script>
+  <script src="/assets/qunit.js"></script>
+  <script src="/assets/simple-dll-tests.amd.js"></script>
+  <script src="/assets/test-support.js"></script>
+  <script>
+    jQuery(document).ready(function() {
+    var TestLoader = require('ember-cli/test-loader')['default'];
+    TestLoader.prototype.shouldLoadModule = function(moduleName) {
+      return moduleName.match(/\/.*[-_]test$/) || (!QUnit.urlParams.nojshint && moduleName.match(/\.jshint$/));
+    };
+
+    TestLoader.prototype.moduleLoadFailure = function(moduleName, error) {
+      QUnit.module('TestLoader Failures');
+      QUnit.test(moduleName + ': could not be loaded', function() {
+        throw error;
+      });
+    };
+
+    var autostart = QUnit.config.autostart !== false;
+    QUnit.config.autostart = false;
+
+    setTimeout(function() {
+      TestLoader.load();
+
+      if (autostart) {
+        QUnit.start();
+      }
+    }, 250);
+  });
+  </script>
+</body>
+</html>

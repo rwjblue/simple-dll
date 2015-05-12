@@ -1,0 +1,27 @@
+{
+  "name": "simple-dll",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rwjblue/simple-dll",
+  "authors": [
+    "Robert Jackson <robert.w.jackson@me.com>"
+  ],
+  "description": "Simple Doubly Linked List",
+  "main": "lib/simple-dll.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "loader.js": "ember-cli/loader.js#3.2.0",
+    "jquery": "~2.1.4",
+    "ember-cli-test-loader": "~0.1.3",
+    "qunit": "~1.18.0"
+  }
+}
