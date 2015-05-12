@@ -1,6 +1,7 @@
 var pickFiles  = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
 var compileES6 = require('broccoli-es6modules');
+var babel    = require('broccoli-babel-transpiler');
 var concat   = require('broccoli-sourcemap-concat');
 
 // --- Compile ES6 modules ---
@@ -22,6 +23,7 @@ var tests = pickFiles('tests', {
 
 var main = mergeTrees([lib, tests]);
 main = new compileES6(main);
+main = new babel(main);
 
 main = concat(main, {
   inputFiles: ['**/*.js'],
