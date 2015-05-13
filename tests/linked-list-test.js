@@ -31,7 +31,6 @@ test('can iterate nodes with forEach', function(assert) {
   var node3 = list.append(62);
   var node4 = list.append(72);
 
-
   var array = [];
   list.forEach(function(value) {
     array.push(value);
@@ -85,4 +84,28 @@ test('can remove all nodes', function(assert) {
   list.remove(node4);
 
   assert.deepEqual(list.toArray(), []);
+});
+
+test('can clear the list', function(assert) {
+  var node1 = list.append(42);
+  var node2 = list.append(52);
+  var node3 = list.append(62);
+  var node4 = list.append(72);
+
+  list.clear();
+
+  assert.deepEqual(list.toArray(), []);
+});
+
+test('can clone the list', function(assert) {
+  var node1 = list.append(42);
+  var node2 = list.append(52);
+  var node3 = list.append(62);
+  var node4 = list.append(72);
+
+  var listClone = list.clone();
+  list.clear();
+
+  assert.deepEqual(list.toArray(), []);
+  assert.deepEqual(listClone.toArray(), [42,52,62,72]);
 });
