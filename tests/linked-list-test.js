@@ -72,3 +72,17 @@ test('can remove the last node', function(assert) {
 
   assert.deepEqual(list.toArray(), [42,52,62]);
 });
+
+test('can remove all nodes', function(assert) {
+  var node1 = list.append(42);
+  var node2 = list.append(52);
+  var node3 = list.append(62);
+  var node4 = list.append(72);
+
+  list.remove(node1);
+  list.remove(node2);
+  list.remove(node3);
+  list.remove(node4);
+
+  assert.deepEqual(list.toArray(), []);
+});
