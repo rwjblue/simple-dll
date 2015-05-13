@@ -1,5 +1,5 @@
 /* globals QUnit */
-import DLL from 'simple-dll';
+import DLL from 'main';
 
 var list;
 QUnit.module('DLL', {
@@ -109,3 +109,9 @@ test('can clone the list', function(assert) {
   assert.deepEqual(list.toArray(), []);
   assert.deepEqual(listClone.toArray(), [42,52,62,72]);
 });
+
+test('can load from an array', function(assert) {
+  list = DLL.fromArray([42,52,62,72]);
+
+  assert.deepEqual(list.toArray(), [42,52,62,72]);
+})
